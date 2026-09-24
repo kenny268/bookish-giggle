@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barcode & QR Code Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔲 Barcode & QR Code Generator</h1>
+      <p>Create 1D barcodes and 2D codes for every use case.</p>
+    </header>
+
+    <main>
+      <!-- Type selector -->
+      <section class="card">
+        <label for="codeType"><strong>Select Code Type</strong></label>
+        <select id="codeType">
+          <optgroup label="1D Barcodes">
+            <option value="barcode-code128">Code 128</option>
+            <option value="barcode-ean13">EAN-13</option>
+            <option value="barcode-upca">UPC-A</option>
+          </optgroup>
+          <optgroup label="2D Codes">
+            <option value="qrcode">QR Code (plain)</option>
+            <option value="datamatrix">Data Matrix</option>
+            <option value="pdf417">PDF417</option>
+          </optgroup>
+          <optgroup label="Categories">
+            <option value="vcard">vCard (Digital Business Card)</option>
+            <option value="pdf">PDF Document</option>
+            <option value="image">Image Display</option>
+            <option value="social">Social Media</option>
+            <option value="video">Video</option>
+            <option value="business">Business Page</option>
+          </optgroup>
+        </select>
+      </section>
+
+      <!-- Dynamic form area -->
+      <section class="card" id="formArea">
+        <!-- Fields injected by JS based on selected type -->
+      </section>
+
+      <!-- Options -->
+      <section class="card" id="optionsArea">
+        <h3>Options</h3>
+        <div class="grid">
+          <label>Size (px) <input type="number" id="optSize" value="400" min="100" max="2048" /></label>
+          <label>Dark Colour <input type="color" id="optDark" value="#000000" /></label>
+          <label>Light Colour <input type="color" id="optLight" value="#ffffff" /></label>
+          <label>Margin <input type="number" id="optMargin" value="2" min="0" max="10" /></label>
+        </div>
+      </section>
+
+      <!-- Generate button -->
+      <button id="generateBtn" class="btn-primary">Generate Code</button>
+
+      <!-- Result -->
+      <section class="card result-card" id="resultArea" style="display:none;">
+        <h3>Generated Code</h3>
+        <div class="result-preview">
+          <img id="resultImage" alt="Generated code" />
+        </div>
+        <div class="result-actions">
+          <a id="downloadLink" download="code.png" class="btn-secondary">⬇ Download PNG</a>
+          <button id="copyBtn" class="btn-secondary">📋 Copy Data URL</button>
+        </div>
+        <p id="resultMeta" class="meta"></p>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
